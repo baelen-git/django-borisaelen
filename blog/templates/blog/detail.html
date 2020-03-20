@@ -1,0 +1,11 @@
+{% extends 'blog/base.html' %} 
+{% block content %}
+{% if article %}
+<div class="article">
+    <h1>{{ article.title }}</h1>
+    {% autoescape off %} {{article.content}} {% endautoescape %}
+</div>
+{% else %}
+<p>No articles are available.</p>
+{% endif %}
+{% endblock %}
