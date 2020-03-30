@@ -26,12 +26,8 @@ class ArticleView(generic.DetailView):
         return Article.objects.filter(pub_date__lte=timezone.now())
 
 
-class WhoamiView(generic.DetailView):
-    model = Article
+class WhoamiView(generic.TemplateView):
     template_name = 'blog/whoami.html'
-
-    def get_queryset(self):
-        return Article.objects.filter(whoami=True)
 
 # def vote(request, question_id):
 #     question = get_object_or_404(Question, pk=question_id)

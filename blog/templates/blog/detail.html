@@ -3,6 +3,10 @@
 {% if article %}
 <div class="article">
     <h1>{{ article.title }}</h1>
+    <div class="article_preview_date">
+        {{ article.pub_date }}
+        <hr>
+    </div>
     {% autoescape off %} {{article.content}} {% endautoescape %}
 </div>
 {% else %}

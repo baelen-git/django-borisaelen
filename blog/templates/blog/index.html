@@ -4,11 +4,17 @@
         {% for article in latest_articles_list %}
             <div class="article_preview">
                 <a href="{% url 'blog:article' article.slug %}">{{ article.title }}</a> 
-                <br><i>{{ article.pub_date }}</i>
+                <div class="article_preview_date">
+                    {{ article.pub_date }}
+                    <hr>
+                </div>
                 {% autoescape off %} 
-                    {{article.content | truncatewords_html:50}} 
+                {{article.content | truncatewords_html:30}} 
                 {% endautoescape %}
+                 <a style="font-size: 1em;font-style: normal;" href="{% url 'blog:article' article.slug  %}">Read More ---></a>
             </div>
+            
+               
             <br><br> 
         {% endfor %} 
     {% else %}
