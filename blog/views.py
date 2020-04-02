@@ -5,15 +5,13 @@ from django.views import generic
 from django.utils import timezone
 
 from .models import Article
-
-
 class IndexView(generic.ListView):
     template_name = 'blog/index.html'
     context_object_name = 'latest_articles_list'
 
     def get_queryset(self):
         """Return the last five published articles."""
-        return Article.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')[:5]
+        return Article.objects.filter(status=1).order_by('-pub_date')[:5]
 
 class ArticleView(generic.DetailView):
     model = Article

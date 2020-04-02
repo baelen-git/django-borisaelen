@@ -1,9 +1,13 @@
-{% extends 'blog/base.html' %} 
+{% extends 'blog/base.html' %}
+{% load static %} 
+
 {% block content %} 
     {% if latest_articles_list %} 
         {% for article in latest_articles_list %}
             <div class="article_preview">
-                <a href="{% url 'blog:article' article.slug %}">{{ article.title }}</a> 
+                <a class="alignleft" href="{% url 'blog:article' article.slug %}">{{ article.title }}</a>
+                {% block social %} {% include 'blog/social.html' %} {% endblock social %}
+            <div style="clear: both;"></div>
                 <div class="article_preview_date">
                     {{ article.pub_date }}
                     <hr>
