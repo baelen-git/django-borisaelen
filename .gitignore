@@ -4,7 +4,7 @@
 *.pyc
 __pycache__
 db.sqlite3
-media
+#media
 Scripts
 local_settings.py
 
@@ -37,7 +37,8 @@ dist/
 downloads/ 
 eggs/ 
 .eggs/ 
-static/
+/static
+/media
 lib/ 
 lib64/ 
 parts/ 
@@ -49,6 +50,7 @@ wheels/
 *.egg 
 *.manifest 
 *.spec 
+.htaccess
 
 # Installer logs 
 pip-log.txt 

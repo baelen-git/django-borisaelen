@@ -1,14 +1,17 @@
 {% extends 'blog/base.html' %} 
 {% load static %} 
 {% block content %}
-<div class="article">
-    <h1>Boris Aelen</h1>
+<div class="whoami">
+	<div class=picture>
+		<img src="{% static 'blog/media/profile_pic.png' %}" height="150" >
+	</div>
+	<h1>Boris Aelen</h1>
+	<pre>
 	Infrastructure
 	Automation
 	Cisco UCS
 	NetApp
+</pre>
 </div>
-<div class=picture>
-	<img src="{% static 'blog/media/profile_pic.jpeg' %}" height="20%" width="20%">
-</div>
+
 {% endblock %}
