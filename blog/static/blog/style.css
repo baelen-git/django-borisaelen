@@ -1,20 +1,15 @@
 body {
     background: white;
-    font-family: 'Courier New', Courier, monospace;
 }
 
 nav {
     text-align: center;
 }
 
-.picture {
-    border: black;
-    float: right;
-}
 nav a {
     color: red;
-    font-size: 1.3em;
-    text-decoration: none;
+    font-size: 200%;
+    text-decoration: solid;
     font-weight: bold;
     margin: 3em;
 }
@@ -24,8 +19,18 @@ nav a:hover {
     color: red;
 }
 
+nav a:visited {
+    text-decoration: none;
+    color: red;
+}
+nav a:active {
+    text-decoration: none;
+    color: red;
+}
+
 svg {
     stroke-dasharray: 6;
+    margin-top: 0;
 }
 
 .alignleft {
@@ -48,9 +53,9 @@ svg {
 
 .article_preview a {
     color: black;
-    font-size: 1.3em;
+    font-size: 160%;
     font-weight: bold;
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 .article_preview_date {
@@ -83,17 +88,23 @@ svg {
 }
 
 .whoami {
-    padding-top: 10px;
-    padding-left: 5px;
     color: black;
     text-align: left;
     margin: auto;
     width: 40%;
+    text-align: left
 }
+
+.picture {
+    display: flex;
+    align-items: left;
+    margin: 0em;
+}
+
 
 .article h1 {
     color: black;
-    font-size: 1.3em;
+    font-size: 150%;
     font-weight: bold;
     text-decoration: underline;
 }

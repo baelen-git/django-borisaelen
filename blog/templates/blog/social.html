@@ -1,22 +1,22 @@
 {% load static %} 
 {% block social %}
-    <a class="alignright" href="https://www.linkedin.com/shareArticle?mini=true
-        &url=http://borisaelen.nl{% url 'blog:article' article.slug %}
-        &title={{ article.title }}
-        &summary={{ article.content | striptags | truncatechars_html:150 }}
-        &source=borisaelen.nl" 
-        onclick="window.open(this.href, 'mywin','left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;">
-        <img src="{% static 'blog/media/linkedin_icon.png' %}" alt="Post to LinkedIn" width="20" height="20" hspace="3" />
-    </a>
-    <a class="alignright" href="https://web.facebook.com/v3.3/dialog/share?
-        &app_id=831186977385182
-        &href=http://borisaelen.nl{% url 'blog:article' article.slug %}
-        &display=page" 
-        onclick="window.open(this.href, 'mywin','left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;">
-        <img src="{% static 'blog/media/facebook_icon.png' %}" alt="Post to LinkedIn" width="20" height="20" hspace="3" />
-    </a>
-    <a class="alignright" href="https://twitter.com/intent/tweet/?text={{ article.title }}&url=http://borisaelen.nl{% url 'blog:article' article.slug %}&via=borisaelen" 
-        onclick="window.open(this.href, 'mywin','left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;">
-        <img src="{% static 'blog/media/twitter_icon.png' %}" alt="Post to Twitter" width="20" height="20" hspace="3" />
-    </a>
+        <a class="alignright" href="https://www.linkedin.com/shareArticle?mini=true
+            &url=http://borisaelen.nl{% url 'blog:article' article.slug %}
+            &title={{ article.title }}
+            &summary={{ article.content | striptags | truncatechars_html:150 }}
+            &source=borisaelen.nl" 
+            onclick="window.open(this.href, 'mywin','left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;">
+            <img src="{% static 'blog/media/linkedin_icon.png' %}" alt="Post to LinkedIn" width="20" height="20" hspace="3" />
+        </a>
+        <a class="alignright" href="https://web.facebook.com/v3.3/dialog/share?
+            &app_id=831186977385182
+            &href=http://borisaelen.nl{% url 'blog:article' article.slug %}
+            &display=page" 
+            onclick="window.open(this.href, 'mywin','left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;">
+            <img src="{% static 'blog/media/facebook_icon.png' %}" alt="Post to LinkedIn" width="20" height="20" hspace="3" />
+        </a>
+        <a class="alignright" href="https://twitter.com/intent/tweet/?text={{ article.title }}&url=http://borisaelen.nl{% url 'blog:article' article.slug %}&via=borisaelen" 
+            onclick="window.open(this.href, 'mywin','left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;">
+            <img src="{% static 'blog/media/twitter_icon.png' %}" alt="Post to Twitter" width="20" height="20" hspace="3" />
+        </a>
 {% endblock social %}
