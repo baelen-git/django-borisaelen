@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import sys
+import vaulthelpers
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -24,9 +26,9 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    'polls.apps.PollsConfig',
     'blog.apps.BlogConfig',
-    'django_summernote',
+    'vaulthelpers',
+    'tinymce',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -70,13 +72,21 @@ WSGI_APPLICATION = 'borisaelen.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
+# Load database credentials from Vault for production
 DATABASES = {
-    'default': {
+     'dev': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    },
+    'production': vaulthelpers.database.get_config()
 }
 
+# Decide which database to use based on the DJANG_DATABASE environment variable
+if os.environ.get('DJANGO_DATABASE'):
+    default_database = os.environ.get('DJANGO_DATABASE')
+    DATABASES['default'] = DATABASES[default_database]
+else:
+    raise ValueError('DJANGO_DATABASE environment variable is not set.')
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -96,20 +106,13 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
@@ -120,6 +123,31 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 MEDIA_URL = '/media/'
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
+TINYMCE_SPELLCHECKER = True
+TINYMCE_COMPRESSOR = True
+TINYMCE_DEFAULT_CONFIG = {
+    "theme": "silver",
+    "height": 500,
+    "menubar": False,
+    "plugins": "codesample,advlist,autolink,lists,link,image,charmap,print,preview,anchor,searchreplace,visualblocks,code,fullscreen,insertdatetime,media,table,paste,code,help,wordcount",
+    "toolbar": "undo redo | formatselect | codesample bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help",
+    "codesample_languages": [
+        { "text": 'HTML/XML', "value": 'markup' },
+        { "text": 'JavaScript', "value": 'javascript' },
+        { "text": 'CSS', "value": 'css' },
+        { "text": 'JSON', "value": 'json' },
+        { "text": 'YAML', "value": 'yaml' },
+        { "text": 'BASH', "value": 'bash' },
+        { "text": 'SHELL', "value": 'shell' },
+        { "text": 'Powershell', "value": 'powershell' },
+        { "text": 'Python', "value": 'python' },
+        { "text": 'Ruby', "value": 'ruby' },
+        { "text": 'Java', "value": 'java' },
+        { "text": 'C', "value": 'c' },
+        { "text": 'C#', "value": 'csharp' },
+        { "text": 'C++', "value": 'cpp' },
+    ],
+}
 
 try:
     from .local_settings import *

@@ -14,16 +14,19 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.conf.urls import include, url
 from django.urls import include, path
 from django.views.generic import TemplateView
 from django.conf import settings
 from django.conf.urls.static import static
+import tinymce.urls
+
 
 urlpatterns = [
-    path('polls/', include('polls.urls')),
     path('blog/', include('blog.urls')),
     path('admin/', admin.site.urls),
-    path('summernote/', include('django_summernote.urls')),
+    url(r"^tinymce/", include(tinymce.urls)),
+    #path('summernote/', include('django_summernote.urls')),
     path('', TemplateView.as_view(template_name='blog/start.html'))
 ] 
 

@@ -1,14 +1,24 @@
-
-from django_summernote.admin import SummernoteModelAdmin
 from django.contrib import admin
 from .models import Article
+from django.urls import reverse
+from tinymce.widgets import TinyMCE
 
-class ArticleAdmin(SummernoteModelAdmin):
+class ArticleAdmin(admin.ModelAdmin):
     list_display = ('title', 'slug', 'status', 'creation_date')
     list_filter = ("status",)
     search_fields = ['title', 'content']
     prepopulated_fields = {'slug': ('title',)}
-    summernote_fields = ('content')
+
+    def formfield_for_dbfield(self, db_field, **kwargs):
+        if db_field.name in ("content"):
+            return db_field.formfield(
+                widget=TinyMCE(
+                    attrs={"cols": 80, "rows": 30},
+                    mce_attrs={"external_link_list_url": reverse("tinymce-linklist")},
+                )
+            )
+        return super(ArticleAdmin, self).formfield_for_dbfield(db_field, **kwargs)
+
 
 admin.site.app_list = 'blog'
 admin.site.site_header = 'Administration'

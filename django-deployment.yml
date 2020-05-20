@@ -1,0 +1,53 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: borisaelen-django
+  labels:
+    app: borisaelen
+spec:
+  ports:
+    - port: 8000
+      nodePort: 30800
+  type: NodePort
+  selector:
+    app: borisaelen
+    tier: frontend
+---
+apiVersion: apps/v1 
+kind: Deployment
+metadata:
+  name: borisaelen-django
+  labels:
+    app: borisaelen
+spec:
+  selector:
+    matchLabels:
+      app: borisaelen
+      tier: frontend
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: borisaelen
+        tier: frontend
+    spec:
+      serviceAccountName: borisaelen-sa
+      containers:
+      - image: borisaelen-website:latest
+        name: borisaelen
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8000
+          name: borisaelen-web
+        env:
+        - name: VAULT_URL
+          value: "http://vault:8200"
+        - name: VAULT_DATABASE_PATH
+          value: database/static-creds/django-admin
+        - name: VAULT_TOKEN
+          value: s.d0NA9rTPnyEX5KYeoeJsIryT
+        - name: DATABASE_URL
+          value: "mysql://borisaelen-mysql:3306/borisaelen"
+        - name: VAULT_DEBUG
+          value: "yes"
