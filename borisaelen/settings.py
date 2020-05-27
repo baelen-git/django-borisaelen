@@ -72,25 +72,45 @@ WSGI_APPLICATION = 'borisaelen.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-# Load database credentials from Vault for production
 DATABASES = {
-     'dev': {
+    'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    },
-    'production': vaulthelpers.database.get_config()
+    }
+    # 'default': vaulthelpers.database.get_config(),
 }
 
-# Decide which database to use based on the DJANG_DATABASE environment variable
-if os.environ.get('DJANGO_DATABASE'):
-    default_database = os.environ.get('DJANGO_DATABASE')
-    DATABASES['default'] = DATABASES[default_database]
-else:
-    raise ValueError('DJANGO_DATABASE environment variable is not set.')
+print(DATABASES)
+# # Load database credentials from Vault for production
+# DATABASES = {
+#     'default': {},
+#     'dev': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     },
+#     'prod': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'OPTIONS': {
+#             'read_default_file': os.path.join(BASE_DIR, 'my.cnf'),
+#             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+#         },
+#     },
+# }
+
+
+# # Decide which database to use based on the DJANG_DATABASE environment variable
+# if os.environ.get('DJANGO_DATABASE'):
+#     #Only add the vault database if there actually is an external vault
+#     if os.environ.get('DJANGO_DATABASE') == 'vault':  
+#         DATABASES['vault'] = vaulthelpers.database.get_config()
+#     DATABASES['default'] = DATABASES[os.environ.get('DJANGO_DATABASE')]
+# else:
+#     raise ValueError('DJANGO_DATABASE environment variable is not set.')
+
+# print(DATABASES)
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -128,10 +148,12 @@ TINYMCE_COMPRESSOR = True
 TINYMCE_DEFAULT_CONFIG = {
     "theme": "silver",
     "height": 500,
-    "menubar": False,
-    "plugins": "codesample,advlist,autolink,lists,link,image,charmap,print,preview,anchor,searchreplace,visualblocks,code,fullscreen,insertdatetime,media,table,paste,code,help,wordcount",
-    "toolbar": "undo redo | formatselect | codesample bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help",
+    "menubar": True,
+    "plugins": "codesample,tabfocus,advlist,autolink,lists,link,image,charmap,print,preview,anchor,searchreplace,visualblocks,code,fullscreen,insertdatetime,media,table,paste,code,help,wordcount",
+    "toolbar": "undo redo | formatselect fontselect fontsizeselect | codesample bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help",
     "codesample_languages": [
+        { "text": 'Powershell', "value": 'powershell' },
+        { "text": 'Batch', "value": 'batch' },
         { "text": 'HTML/XML', "value": 'markup' },
         { "text": 'JavaScript', "value": 'javascript' },
         { "text": 'CSS', "value": 'css' },
@@ -139,7 +161,6 @@ TINYMCE_DEFAULT_CONFIG = {
         { "text": 'YAML', "value": 'yaml' },
         { "text": 'BASH', "value": 'bash' },
         { "text": 'SHELL', "value": 'shell' },
-        { "text": 'Powershell', "value": 'powershell' },
         { "text": 'Python', "value": 'python' },
         { "text": 'Ruby', "value": 'ruby' },
         { "text": 'Java', "value": 'java' },
@@ -147,6 +168,7 @@ TINYMCE_DEFAULT_CONFIG = {
         { "text": 'C#', "value": 'csharp' },
         { "text": 'C++', "value": 'cpp' },
     ],
+    'font_formats': 'sans-serif; Roboto, monospace; Roboto Mono,Arial=arial,helvetica,sans-serif; Courier New=courier new,courier,monospace; AkrutiKndPadmini=Akpdmi-n'
 }
 
 try:

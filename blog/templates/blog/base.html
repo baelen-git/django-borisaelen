@@ -3,17 +3,15 @@
 <html>
 <head>
     <meta charset="UTF-8"> 
-    <link rel="stylesheet" type="text/css" href="{% static 'blog/style.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'blog/prism.css' %}">
-    <script src="{% static 'blog/prism.js' %}"></script>
-
-    <!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"> -->
-    <!-- <link rel="stylesheet" type="text/css" href="{% static 'blog/bootstrap.css' %}"> -->
-
-    <title>¯\_(ツ)_/¯ borisaelen.nl</title>
-    <link rel="icon" href="{% static 'blog/media/favicon.png' %}">
     <meta name="robots" content="index,follow" />
     <meta name="referrer" content="unsafe-url" />
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/prism.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap">
+    <link rel="icon" href="{% static 'blog/media/favicon.png' %}">
+    <script src="{% static 'blog/prism.js' %}"></script>
+    <title>¯\_(ツ)_/¯ borisaelen.nl</title>
     {% block social_head %}
     <!-- OpenGraph Meta Properties for correct sharing on Social Media goes here -->
     {% endblock social_head %}

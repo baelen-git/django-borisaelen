@@ -1,0 +1,17 @@
+server:
+  #standalone with consul
+  # dataStorage: false
+  # standalone:
+  #   enabled: true
+  #   config: |
+  #     storage "consul" {
+  #       path = "vault"
+  #       address = "HOST_IP:8500"
+  #     }
+  #For HA with 3 vault servers disable standalone and enable this 
+  affinity: "" #make sure you can run 3 replicas on 1 node
+  ha:
+#    replicas: 3
+    enabled: true
+  service:
+    type: "LoadBalancer"

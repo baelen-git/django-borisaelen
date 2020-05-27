@@ -71,11 +71,13 @@ spec:
         env:
         - name: MYSQL_ROOT_PASSWORD_FILE
           value: /vault/secrets/mysql_rootpw
-        # resources:  
-        #   limits:
-        #     memory: "600Mi"
-        #   requests:
-        #     memory: "100Mi"
+        - name: innodb_buffer_pool_size
+          value: "134217728"
+        resources:  
+          limits:
+            memory: "512Mi"
+          requests:
+            memory: "128Mi"
       volumes:
       - name: mysql-persistent-storage
         persistentVolumeClaim:

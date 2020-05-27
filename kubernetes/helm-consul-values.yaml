@@ -1,0 +1,19 @@
+global:
+  datacenter: laptop
+
+client:
+  enabled: true
+
+server:
+  enabled: true
+  # Don't run less then 3 replicas, I experienced an unrecoverable cluster failure with a 1 node cluster.
+  # replicas: 3 (default=3) 
+  # bootstrapExpect: 3 (default=3)
+  # disruptionBudget:
+  #   maxUnavailable: null (default=null)
+  storage: "1Gi" #(default=10Gi)
+  affinity: "" #(default = podAntiAffinity) Disable 1 pod per node affinity for 3 replicas on 1 node
+
+ui: 
+  service:
+    type: "LoadBalancer" #expose Consul to your Network.

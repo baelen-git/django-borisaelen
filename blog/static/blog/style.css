@@ -28,6 +28,23 @@ nav a:active {
     color: red;
 }
 
+pre a {
+    color: white;
+}
+/* pre a:hover {
+    text-decoration: none;
+    color: red;
+}
+
+pre a:visited {
+    text-decoration: none;
+    color: red;
+}
+pre a:active {
+    text-decoration: none;
+    color: red;
+} */
+
 svg {
     stroke-dasharray: 6;
     margin-top: 0;
@@ -83,7 +100,7 @@ svg {
     color: black;
     text-align: left;
     margin: auto;
-    width: 60%;
+    width: 80%;
     /* border: 1.5px solid gainsboro */
 }
 

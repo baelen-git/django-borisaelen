@@ -7,8 +7,10 @@ metadata:
 spec:
   ports:
     - port: 8000
-      nodePort: 30800
-  type: NodePort
+      name: "website"
+    - port: 3500
+      name: "debug" 
+  type: LoadBalancer
   selector:
     app: borisaelen
     tier: frontend
@@ -34,20 +36,31 @@ spec:
     spec:
       serviceAccountName: borisaelen-sa
       containers:
-      - image: borisaelen-website:latest
-        name: borisaelen
+      - name: borisaelen
+        image: borisaelen-website
         imagePullPolicy: Never
         ports:
         - containerPort: 8000
           name: borisaelen-web
         env:
+        - name: DJANGO_DATABASE
+          value: "vault"
         - name: VAULT_URL
           value: "http://vault:8200"
         - name: VAULT_DATABASE_PATH
           value: database/static-creds/django-admin
-        - name: VAULT_TOKEN
-          value: s.d0NA9rTPnyEX5KYeoeJsIryT
+        - name: VAULT_KUBERNETES_ROLE
+          value: "borisaelen"
+        - name: VAULT_KUBERNETES_TOKEN_PATH
+          value: /run/secrets/kubernetes.io/serviceaccount/token
         - name: DATABASE_URL
           value: "mysql://borisaelen-mysql:3306/borisaelen"
         - name: VAULT_DEBUG
           value: "yes"
+        # livenessProbe:
+        #   httpGet:
+        #     path: /blog/
+        #     port: 8000
+        #   failureThreshold: 30
+        #   initialDelaySeconds: 3
+        #   periodSeconds: 3
