@@ -101,8 +101,6 @@ if os.environ.get('DJANGO_DATABASE'):
 else:
     raise ValueError('DJANGO_DATABASE environment variable is not set.')
 
-print(DATABASES)
-
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 AUTH_PASSWORD_VALIDATORS = [

@@ -1,5 +1,7 @@
 #!/bin/sh
 
+#fix end of line
+
 # Collect static files
 echo "Collect static files"
 python manage.py collectstatic --noinput
