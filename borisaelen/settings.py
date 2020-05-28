@@ -68,46 +68,40 @@ TEMPLATES = [
 # WSGI_APPLICATION = 'borisaelen.wsgi.application'
 WSGI_APPLICATION = 'borisaelen.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-    # 'default': vaulthelpers.database.get_config(),
-}
+# Decide which database to use based on the DJANG_DATABASE environment variable
+if os.environ.get('DJANGO_DATABASE'):
+    if os.environ.get('DJANGO_DATABASE') == 'vault':  
+        #Get the database credentails from the vault
+        DATABASES = {
+            'default': vaulthelpers.database.get_config(),
+        }
+    elif os.environ.get('DJANGO_DATABASE') == 'dev':  
+        DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.sqlite3',
+                'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+             }
+        }     
+    elif os.environ.get('DJANGO_DATABASE') == 'prod':  
+        #Provide the connection details to your prod database in a my.cnf file
+        DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.mysql',
+                'OPTIONS': {
+                    'read_default_file': os.path.join(BASE_DIR, 'my.cnf'),
+                    'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+                }
+            }
+        }
+    else:
+        raise ValueError('You have provided an unknown DJANGO_DATABASE value.' + os.environ.get('DJANGO_DATABASE'))
+else:
+    raise ValueError('DJANGO_DATABASE environment variable is not set.')
 
 print(DATABASES)
-# # Load database credentials from Vault for production
-# DATABASES = {
-#     'default': {},
-#     'dev': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     },
-#     'prod': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'OPTIONS': {
-#             'read_default_file': os.path.join(BASE_DIR, 'my.cnf'),
-#             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
-#         },
-#     },
-# }
-
-
-# # Decide which database to use based on the DJANG_DATABASE environment variable
-# if os.environ.get('DJANGO_DATABASE'):
-#     #Only add the vault database if there actually is an external vault
-#     if os.environ.get('DJANGO_DATABASE') == 'vault':  
-#         DATABASES['vault'] = vaulthelpers.database.get_config()
-#     DATABASES['default'] = DATABASES[os.environ.get('DJANGO_DATABASE')]
-# else:
-#     raise ValueError('DJANGO_DATABASE environment variable is not set.')
-
-# print(DATABASES)
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
