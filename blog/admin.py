@@ -1,7 +1,7 @@
 from django.contrib import admin
-from .models import Article
 from django.urls import reverse
 from tinymce.widgets import TinyMCE
+from .models import Article, Comment
 
 class ArticleAdmin(admin.ModelAdmin):
     list_display = ('title', 'slug', 'status', 'creation_date')
@@ -19,8 +19,18 @@ class ArticleAdmin(admin.ModelAdmin):
             )
         return super(ArticleAdmin, self).formfield_for_dbfield(db_field, **kwargs)
 
+@admin.register(Comment)
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ('name', 'body', 'article', 'created_on', 'active')
+    list_filter = ('active', 'created_on')
+    search_fields = ('name', 'email', 'body')
+    actions = ['approve_comments']
+
+    def approve_comments(self, request, queryset):
+        queryset.update(active=True)
 
 admin.site.app_list = 'blog'
 admin.site.site_header = 'Administration'
 admin.site.index_title = 'borisaelen.nl'
 admin.site.register(Article, ArticleAdmin)
+

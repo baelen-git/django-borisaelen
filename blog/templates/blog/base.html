@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8"> 
     <meta name="robots" content="index,follow" />
@@ -10,35 +10,33 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap">
     <link rel="icon" href="{% static 'blog/media/favicon.png' %}">
-    <script src="{% static 'blog/prism.js' %}"></script>
+    {{ comment_form.media }}
     <title>¯\_(ツ)_/¯ borisaelen.nl</title>
     {% block social_head %}
     <!-- OpenGraph Meta Properties for correct sharing on Social Media goes here -->
     {% endblock social_head %}
 </head>
 <body>
-    <font face="Courier New">
     <nav>
         <a href="{% url 'blog:index' %}">blog</a>
         <a href="{% url 'blog:whoami' %}">whoami</a>
     </nav>
-    <svg style='width: 100%; height: 30; padding: 0%;'>
+    <hr>
+    <!-- <svg style='width: 100%; height: 30; padding: 0%;'>
 		<line x1="10%" y1="30" x2="12%" y2="15" style="stroke:rgb(255,0,0);stroke-width:2"/>
 		<line x1="12%" y1="15" x2="88%" y2="15" style="stroke:rgb(255,0,0);stroke-width:2"/>
 		<line x1="88%" y1="15" x2="90%" y2="0" style="stroke:rgb(255,0,0);stroke-width:2"/>
-    </svg>
-    <br> 
+    </svg> -->
     {% block content %}
     <!-- Content Goes here -->
     {% endblock content %}
-</font>
+    <script src="{% static 'blog/prism.js' %}"></script>
+    <script src="{% static 'blog/tldr.js' %}"></script>
 </body>
 <!-- Footer -->
 <footer>
     <hr>
-    <font face="Courier New">
-        <p>Copyright &copy; Boris Aelen ¯\_(ツ)_/¯</p>
-    </font>
+    <p>Made by Boris Aelen ¯\_(ツ)_/¯</p>
 </footer>
 </html>
 

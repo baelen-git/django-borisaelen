@@ -20,13 +20,14 @@ from django.views.generic import TemplateView
 from django.conf import settings
 from django.conf.urls.static import static
 import tinymce.urls
-
+from filebrowser.sites import site
 
 urlpatterns = [
     path('blog/', include('blog.urls')),
+    # path('admin/filebrowser/', site.urls),
+    # path('grappelli/', include('grappelli.urls')),
     path('admin/', admin.site.urls),
     url(r"^tinymce/", include(tinymce.urls)),
-    #path('summernote/', include('django_summernote.urls')),
     path('', TemplateView.as_view(template_name='blog/start.html'))
 ] 
 

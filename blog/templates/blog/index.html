@@ -5,7 +5,7 @@
         {% for article in latest_articles_list %}
     <div class="article_preview">
         <a class="alignleft" href="{% url 'blog:article' article.slug %}">$ {{ article.title }}</a>
-        {% block social %} {% include 'blog/social.html' %} {% endblock social %}
+        <!-- {% block social %} {% include 'blog/social.html' %} {% endblock social %} -->
         <div style="clear: both;"></div>
         <div class="article_preview_date">
             {{ article.pub_date }}

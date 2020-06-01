@@ -24,18 +24,58 @@
 
 {% block content %}
 {% if article %}
-<div class="article">
-    <h1 class="alignleft">{{ article.title }}</h1>
-    {% block social %} {% include 'blog/social.html' %} {% endblock social %}
-    <div style="clear: both;"></div>
-    
-    <div class="article_preview_date">
-        {{ article.pub_date }}
-        <hr>
+<div id="navbar">
+    <div class="alignleft">
+        <h1>{{ article.title }}</h1>
+        <div class="article_preview_date">{{ article.pub_date|date:"j F Y" }}</div>
     </div>
-    {% autoescape off %} {{article.content}} {% endautoescape %}
+    <div class="alignright">
+        {% block social %} {% include 'blog/social.html' %} {% endblock social %}
+        TL;DR
+        <label class="switch">
+            <input type="checkbox" onchange="TLDR(this)">
+            <span class="slider round"></span>
+        </label>
+    </div>
+    <div style="clear:both"></div>
+    <hr>
+</div>
+<div class="article">
+  {% autoescape off %} {{article.content}} {% endautoescape %}
+  <br>
+  <hr>
 </div>
 {% else %}
 <p>No articles are available.</p>
 {% endif %}
+
+{% if comments %}
+  <div class="comment" style="border: none; padding-bottom: 10px;">
+    <h1>Comments</h1>
+  </div>
+  {% for comment in comments %}
+  <div class="comment">
+    <p class="comment_title">
+      {{ comment.name }} on {{ comment.created_on |date:"j F Y" }}:
+    </p>
+    {% autoescape off %} {{ comment.body }} {% endautoescape %}
+  </div>
+  {% endfor %}
+{% endif %}
+
+<div class="comment">
+  {% if new_comment %}
+  <div class="alert alert-success" role="alert">
+    Your comment is awaiting moderation
+  </div>
+  {% else %}
+  <h3>Leave a comment</h3>
+  <form method="post" style="margin-top: 1.3em;">
+    {{ comment_form.as_table }}
+    {% csrf_token %}
+    <button type="submit" class="comment_button">POST</button>
+  </form>
+  {% endif %}
+</div>
+
 {% endblock %}

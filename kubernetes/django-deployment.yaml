@@ -8,8 +8,6 @@ spec:
   ports:
     - port: 8000
       name: "website"
-    - port: 3500
-      name: "debug" 
   type: LoadBalancer
   selector:
     app: borisaelen

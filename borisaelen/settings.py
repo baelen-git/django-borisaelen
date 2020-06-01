@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 import sys
-import vaulthelpers
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -29,6 +28,8 @@ INSTALLED_APPS = [
     'blog.apps.BlogConfig',
     'vaulthelpers',
     'tinymce',
+    # 'grappelli',
+    # 'filebrowser',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -74,7 +75,8 @@ WSGI_APPLICATION = 'borisaelen.wsgi.application'
 # Decide which database to use based on the DJANG_DATABASE environment variable
 if os.environ.get('DJANGO_DATABASE'):
     if os.environ.get('DJANGO_DATABASE') == 'vault':  
-        #Get the database credentails from the vault
+        #Get the database credentails from the 
+        import vaulthelpers
         DATABASES = {
             'default': vaulthelpers.database.get_config(),
         }
@@ -136,18 +138,21 @@ MEDIA_URL = '/media/'
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 TINYMCE_SPELLCHECKER = True
+TINYMCE_FILEBROWSER = True
 TINYMCE_COMPRESSOR = True
 TINYMCE_DEFAULT_CONFIG = {
     "theme": "silver",
     "height": 500,
     "menubar": True,
-    "plugins": "codesample,tabfocus,advlist,autolink,lists,link,image,charmap,print,preview,anchor,searchreplace,visualblocks,code,fullscreen,insertdatetime,media,table,paste,code,help,wordcount",
+    "plugins": "codesample,tabfocus,advlist,autolink,lists,link,image,imagetools,charmap,print,preview,anchor,searchreplace,visualblocks,code,fullscreen,insertdatetime,media,table,paste,code,help,wordcount",
     "toolbar": "undo redo | formatselect fontselect fontsizeselect | codesample bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help",
+    "content_style": "body { font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace; }",
     "codesample_languages": [
-        { "text": 'Powershell', "value": 'powershell' },
         { "text": 'Batch', "value": 'batch' },
+        { "text": 'Powershell', "value": 'powershell' },
         { "text": 'HTML/XML', "value": 'markup' },
         { "text": 'JavaScript', "value": 'javascript' },
+        { "text": 'SQL', "value": 'sql' },
         { "text": 'CSS', "value": 'css' },
         { "text": 'JSON', "value": 'json' },
         { "text": 'YAML', "value": 'yaml' },
@@ -156,11 +161,17 @@ TINYMCE_DEFAULT_CONFIG = {
         { "text": 'Python', "value": 'python' },
         { "text": 'Ruby', "value": 'ruby' },
         { "text": 'Java', "value": 'java' },
-        { "text": 'C', "value": 'c' },
-        { "text": 'C#', "value": 'csharp' },
-        { "text": 'C++', "value": 'cpp' },
     ],
-    'font_formats': 'sans-serif; Roboto, monospace; Roboto Mono,Arial=arial,helvetica,sans-serif; Courier New=courier new,courier,monospace; AkrutiKndPadmini=Akpdmi-n'
+    "font_formats": "Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace; Roboto, monospace; sans-serif; Roboto Mono,Arial=arial,helvetica,sans-serif; Courier New=courier new,courier,monospace; AkrutiKndPadmini=Akpdmi-n",
+    "block_formats": "Paragraph=p; Paragraph TLDR=p_tldr; Heading 1=h1; Heading 3=h3; Pre=pre; Pre TLDR=pre_tldr",
+    "formats": {
+        "p": { 'block': "p", 'exact': "true" },
+        "p_tldr": { 'block': "p", 'classes': "tldr", 'exact': "true" },
+        "h1": { 'block': "h1" },
+        "h3": { 'block': "h3" },
+        "pre": { 'block': "pre", 'exact': "true" },
+        "pre_tldr": { 'block': "pre", 'classes': "tldr", 'exact': "true" }
+    },
 }
 
 try:

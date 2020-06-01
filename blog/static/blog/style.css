@@ -1,5 +1,6 @@
 body {
     background: white;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
 }
 
 nav {
@@ -15,7 +16,7 @@ nav a {
 }
 
 nav a:hover {
-    text-decoration: none;
+    text-decoration: underline;
     color: red;
 }
 
@@ -24,7 +25,7 @@ nav a:visited {
     color: red;
 }
 nav a:active {
-    text-decoration: none;
+    text-decoration: underline  ;
     color: red;
 }
 
@@ -79,29 +80,17 @@ svg {
     text-align: left;
     font-style: italic;
     margin-bottom: 0;
+    margin-top: 0;
 }
 
-.article_preview_date hr {
-    margin-top: 5px;
-    border: none;
-    border-top: 1px dotted red;
-    color: #fff;
-    background-color: #fff;
-    height: 1px;
-}
 
 .article_preview a:hover {
     color: black;
 }
 
-.article {
-    padding-top: 10px;
-    padding-left: 5px;
-    color: black;
-    text-align: left;
-    margin: auto;
-    width: 80%;
-    /* border: 1.5px solid gainsboro */
+.article_preview p {
+    font-size: 1;
+    text-decoration: none;
 }
 
 .whoami {
@@ -116,25 +105,110 @@ svg {
     display: flex;
     align-items: left;
     margin: 0em;
+    padding: 0;
 }
 
+/* Article Styles */
+#navbar{
+    position: -webkit-sticky;
+    position: sticky;
+    margin: auto;
+    margin-bottom: 0px;
+    top: 0;
+    padding: 5px;
+    width: 80%;
+    background-color: white;
+    z-index: 100;
+}
 
-.article h1 {
+h1 {
     color: black;
     font-size: 150%;
     font-weight: bold;
     text-decoration: underline;
+    margin-bottom: 5px;
 }
 
-.article_preview p {
-    font-size: 1;
-    text-decoration: none;
+hr {
+    margin-top: 5px;
+    border: none;
+    border-top: 2px dashed red;
+    /* border-top: 2px dotted red; */
 }
 
+.socialblock {
+    margin-top: 25px;
+    margin-bottom: 5px;
+}
+
+.article {
+    color: black;
+    margin: auto;
+    width: 80%;
+    /* border: 1.5px solid gainsboro */
+}
+
+/* Comment Styling */
+.comment {
+    color: black;
+    width: 70%;
+    border: 1.5px solid gainsboro;
+    border-style: dashed;
+    margin: auto;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.comment_title {
+    text-decoration: underline;
+}
+
+.comment_button {
+    display: inline-block;
+    color: red;
+    background-color: white;
+    padding: 6px 12px ;
+    border: 2px solid red;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: 600;
+    transition-duration: 0.4s;
+    margin: 10px 0px;
+}
+
+.comment_button:hover {
+    background-color: red;
+    color: white;
+}
+
+input{
+    width: 100%;
+    padding: 12px 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 2px solid gainsboro;
+    transition: 0.5s;
+    -webkit-transition: 0.5s;
+    outline: none;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    font-size: 1em;
+}
+
+input:focus{
+    border: 2px solid #555;
+}
+
+textarea{ 
+    margin: 10px 0;
+}
+
+/* Footer things */
 footer p {
     text-align: center;
 }
 
+/* Start page shrug alignment */
 .outer {
     display: table;
     position: absolute;
@@ -154,3 +228,71 @@ footer p {
     margin-right: auto;
     text-align: center;
 }
+
+/* Styles used for the TLDR switcher */
+/* The switch - the box around the slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 19px;
+    /* padding-bottom: 0px; */
+    /* padding: 5px; */
+    margin-top: 0px;
+  }
+  
+  /* Hide default HTML checkbox */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* The slider */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 14px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: red;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px red;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(18px);
+    -ms-transform: translateX(18px);
+    transform: translateX(18px);
+  }
+  
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 20px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+  

@@ -2,6 +2,6 @@
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '<OUT YOUR SECRET KEY HERE>'
+SECRET_KEY = '<PUT YOUR SECRET KEY HERE>'
 
 DEBUG = True
