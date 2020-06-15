@@ -13,6 +13,11 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 import sys
 
+try:
+    from .local_settings import *
+except ImportError:
+    pass
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -144,7 +149,7 @@ TINYMCE_DEFAULT_CONFIG = {
     "theme": "silver",
     "height": 500,
     "menubar": True,
-    "plugins": "codesample,tabfocus,advlist,autolink,lists,link,image,imagetools,charmap,print,preview,anchor,searchreplace,visualblocks,code,fullscreen,insertdatetime,media,table,paste,code,help,wordcount",
+    "plugins": "code,codesample,tabfocus,advlist,autolink,lists,link,image,imagetools,charmap,print,preview,anchor,searchreplace,visualblocks,fullscreen,insertdatetime,media,table,paste,help,wordcount",
     "toolbar": "undo redo | formatselect fontselect fontsizeselect | codesample bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help",
     "content_style": "body { font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace; }",
     "codesample_languages": [
@@ -174,7 +179,3 @@ TINYMCE_DEFAULT_CONFIG = {
     },
 }
 
-try:
-    from .local_settings import *
-except ImportError:
-    pass
