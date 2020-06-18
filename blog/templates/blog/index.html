@@ -8,7 +8,7 @@
         <!-- {% block social %} {% include 'blog/social.html' %} {% endblock social %} -->
         <div style="clear: both;"></div>
         <div class="article_preview_date">
-            {{ article.pub_date }}
+            {{ article.pub_date |date:"j F Y"}}
             <hr>
         </div>
         {% autoescape off %} 

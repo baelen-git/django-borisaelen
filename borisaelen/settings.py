@@ -31,7 +31,7 @@ ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'blog.apps.BlogConfig',
-    'vaulthelpers',
+    #'vaulthelpers',
     'tinymce',
     # 'grappelli',
     # 'filebrowser',
@@ -142,9 +142,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 MEDIA_URL = '/media/'
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
-TINYMCE_SPELLCHECKER = True
-TINYMCE_FILEBROWSER = True
-TINYMCE_COMPRESSOR = True
+# TINYMCE_JS_URL = 'http://debug.example.org/tiny_mce/tiny_mce_src.js'
+TINYMCE_JS_URL = os.path.join(STATIC_URL, "tinymce/tinymce.min.js")
 TINYMCE_DEFAULT_CONFIG = {
     "theme": "silver",
     "height": 500,
@@ -178,4 +177,7 @@ TINYMCE_DEFAULT_CONFIG = {
         "pre_tldr": { 'block': "pre", 'classes': "tldr", 'exact': "true" }
     },
 }
+TINYMCE_SPELLCHECKER = True
+TINYMCE_FILEBROWSER = True
+TINYMCE_COMPRESSOR = True
 
