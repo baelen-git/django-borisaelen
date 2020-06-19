@@ -65,21 +65,25 @@ svg {
     text-decoration: none;
 }
 
-/* .article_preview a:visited {
+.article_preview a:link {
+    text-decoration: none;
     color: black;
 }
 
-.article_preview a:link {
+.article_preview a:visited {
+    text-decoration: none;
     color: black;
 }
 
 .article_preview a:hover {
+    text-decoration: none;
     color: black;
 }
 .article_preview a:active {
+    text-decoration: none;
     color: black;
 }
- */
+
 .article_preview_date {
     text-align: left;
     font-style: italic;
