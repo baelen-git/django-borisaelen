@@ -1,11 +1,11 @@
 body {
     /* background-color: #1d1f21; */
     background: white;
-    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    font-family: 'Ubuntu Mono', monospace;
 }
 
 footer {
-    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    font-family: 'Ubuntu Mono', monospace;
 }
 
 nav {
@@ -37,19 +37,6 @@ nav a:active {
 pre a {
     color: white;
 }
-/* pre a:hover {
-    text-decoration: none;
-    color: red;
-}
-
-pre a:visited {
-    text-decoration: none;
-    color: red;
-}
-pre a:active {
-    text-decoration: none;
-    color: red;
-} */
 
 svg {
     stroke-dasharray: 6;
@@ -85,6 +72,11 @@ svg {
 .article_preview a:visited {
     color: black;
 }
+
+.article_preview a:active {
+    color: black;
+}
+
 .article_preview_date {
     text-align: left;
     font-style: italic;

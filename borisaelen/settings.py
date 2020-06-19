@@ -142,15 +142,13 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 MEDIA_URL = '/media/'
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
-# TINYMCE_JS_URL = 'http://debug.example.org/tiny_mce/tiny_mce_src.js'
-TINYMCE_JS_URL = os.path.join(STATIC_URL, "tinymce/tinymce.min.js")
 TINYMCE_DEFAULT_CONFIG = {
     "theme": "silver",
     "height": 500,
     "menubar": True,
     "plugins": "code,codesample,tabfocus,advlist,autolink,lists,link,image,imagetools,charmap,print,preview,anchor,searchreplace,visualblocks,fullscreen,insertdatetime,media,table,paste,help,wordcount",
     "toolbar": "undo redo | formatselect fontselect fontsizeselect | codesample bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help",
-    "content_style": "body { font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace; }",
+    "content_style": "body { font-family: 'Ubuntu Mono' }",
     "codesample_languages": [
         { "text": 'Batch', "value": 'batch' },
         { "text": 'Powershell', "value": 'powershell' },
@@ -166,7 +164,7 @@ TINYMCE_DEFAULT_CONFIG = {
         { "text": 'Ruby', "value": 'ruby' },
         { "text": 'Java', "value": 'java' },
     ],
-    "font_formats": "Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace; Roboto, monospace; sans-serif; Roboto Mono,Arial=arial,helvetica,sans-serif; Courier New=courier new,courier,monospace; AkrutiKndPadmini=Akpdmi-n",
+    "font_formats": "Ubuntu Mono='Ubuntu Mono', monospace; sans-serif; Courier New=courier new,courier,monospace",
     "block_formats": "Paragraph=p; Paragraph TLDR=p_tldr; Heading 1=h1; Heading 3=h3; Pre=pre; Pre TLDR=pre_tldr",
     "formats": {
         "p": { 'block': "p", 'exact': "true" },
