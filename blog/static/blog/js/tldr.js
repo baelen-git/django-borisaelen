@@ -1,5 +1,5 @@
 function TLDR(element){
-    var elements = document.querySelectorAll('.tldr,.language-tldr');
+    var elements = document.querySelectorAll('.tldr');
 
     for(var i=0; i<elements.length; i++) {
         if (elements[i].style.display === "none") {

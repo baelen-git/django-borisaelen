@@ -2,6 +2,7 @@ body {
     /* background-color: #1d1f21; */
     background: white;
     font-family: 'Ubuntu Mono', monospace;
+    height: 100;
 }
 
 footer {
@@ -9,19 +10,16 @@ footer {
 }
 
 nav {
-    text-align: center;
-}
-
-nav a {
     color: red;
     font-size: 200%;
     text-decoration: solid;
     font-weight: bold;
-    margin: 3em;
+    margin: auto;
+    text-align: center;
 }
 
-nav a:hover {
-    text-decoration: underline;
+nav a:link {
+    text-decoration: none;
     color: red;
 }
 
@@ -29,8 +27,13 @@ nav a:visited {
     text-decoration: none;
     color: red;
 }
+
+nav a:hover {
+    text-decoration: underline;
+    color: red;
+}
 nav a:active {
-    text-decoration: underline  ;
+    text-decoration: none;
     color: red;
 }
 
@@ -43,45 +46,32 @@ svg {
     margin-top: 0;
 }
 
-.alignleft {
+/* .alignleft {
     float: left;
 }
 
 .alignright {
     float: right;
-}
+} */
 
 .article_preview {
-    padding: 10px;
+    /* padding: 10px; */
     margin: auto;
-    width: 50%;
+    margin-bottom: 15px;
+    overflow: scroll;
     border: 1.5px dashed gainsboro;
+    -ms-overflow-style: none;
 }
+
+.article_preview::-webkit-scrollbar {
+    display: none;
+  }
 
 .article_preview a {
     color: black;
     font-size: 150%;
     font-weight: bold;
     text-decoration: none;
-}
-
-.article_preview a:link {
-    text-decoration: none;
-    color: black;
-}
-
-.article_preview a:visited {
-    text-decoration: none;
-    color: black;
-}
-
-.article_preview a:hover {
-    text-decoration: none;
-    color: black;
-}
-.article_preview a:active {
-    text-decoration: none;
-    color: black;
 }
 
 .article_preview_date {
@@ -92,11 +82,7 @@ svg {
 }
 
 .whoami {
-    color: black;
-    text-align: left;
     margin: auto;
-    width: 40%;
-    text-align: left
 }
 
 .picture {
@@ -107,31 +93,35 @@ svg {
 }
 
 /* Article Styles */
-#navbar{
+/* .sticky{
+    position: fixed;
     position: -webkit-sticky;
-    position: sticky;
-    margin: auto;
-    margin-bottom: 0px;
     top: 0;
-    padding: 5px;
-    width: 80%;
     background-color: white;
     z-index: 100;
-}
+} */
+
+.fixed-top{
+    text-align: right;
+    background-color: white;
+    z-index: 100;
+} 
 
 h1 {
-    color: black;
     font-size: 150%;
     font-weight: bold;
-    text-decoration: none;
     margin-bottom: 5px;
+}
+
+h3 {
+    font-size: 120%;
+    font-weight: bold;
 }
 
 hr {
     margin-top: 5px;
     border: none;
     border-top: 2px dashed red ;
-    /* border-top: 2px dotted red; */
 }
 
 .socialblock {
@@ -142,14 +132,18 @@ hr {
 .article {
     color: black;
     margin: auto;
-    width: 80%;
-    /* border: 1.5px solid gainsboro */
+    overflow: scroll;
+    -ms-overflow-style: none;
+}
+
+.article::-webkit-scrollbar {
+    display: none;
 }
 
 /* Comment Styling */
 .comment {
     color: black;
-    width: 70%;
+    /* width: 70%; */
     border: 1.5px solid gainsboro;
     border-style: dashed;
     margin: auto;

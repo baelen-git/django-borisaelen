@@ -13,9 +13,9 @@ class CommentForm(forms.ModelForm):
                         "selector": 'textarea#id_body',
                         "height": 200,
                         "menubar": "false",
-                        "plugins": "codesample,tabfocus,advlist,autolink,lists,link,image,imagetools,charmap,print,preview,anchor,searchreplace,visualblocks,code,fullscreen,insertdatetime,media,table,paste,code,help,wordcount",
-                        "toolbar": "undo redo | fontsizeselect codesample | bold italic backcolor | alignleft aligncenter alignright | bullist numlist outdent indent | removeformat | help",
-                        "content_style": "body { font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace; }",
+                        "block_formats": "Paragraph=p; Heading 1=h1; Heading 3=h3; Pre=pre",
+                        "toolbar": "undo | formatselect | bold italic backcolor codesample | bullist numlist help",
+                        "content_style": "body { font-family: 'Ubuntu Mono', monospace; }",
                     },
                 ))
     class Meta:

@@ -145,9 +145,14 @@ X_FRAME_OPTIONS = 'SAMEORIGIN'
 TINYMCE_DEFAULT_CONFIG = {
     "theme": "silver",
     "height": 500,
-    "menubar": True,
+    "menubar": False,
+    "mobile": [
+        { "theme": 'mobile' },
+        { "plugins": 'autosave lists autolink'},
+        { "toolbar": 'undo bold italic styleselect'}    
+    ],
     "plugins": "code,codesample,tabfocus,advlist,autolink,lists,link,image,imagetools,charmap,print,preview,anchor,searchreplace,visualblocks,fullscreen,insertdatetime,media,table,paste,help,wordcount",
-    "toolbar": "undo redo | formatselect fontselect fontsizeselect | codesample bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help",
+    "toolbar": "undo redo | formatselect | bold italic backcolor | codesample link image media code | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent table | removeformat | help",
     "content_style": "body { font-family: 'Ubuntu Mono' }",
     "codesample_languages": [
         { "text": 'Batch', "value": 'batch' },
@@ -165,7 +170,7 @@ TINYMCE_DEFAULT_CONFIG = {
         { "text": 'Java', "value": 'java' },
     ],
     "font_formats": "Ubuntu Mono='Ubuntu Mono', monospace; sans-serif; Courier New=courier new,courier,monospace",
-    "block_formats": "Paragraph=p; Paragraph TLDR=p_tldr; Heading 1=h1; Heading 3=h3; Pre=pre; Pre TLDR=pre_tldr",
+    "block_formats": "Paragraph=p; Paragraph TLDR=p_tldr; Heading 1=h1; Heading 3=h3; Pre=pre",
     "formats": {
         "p": { 'block': "p", 'exact': "true" },
         "p_tldr": { 'block': "p", 'classes': "tldr", 'exact': "true" },

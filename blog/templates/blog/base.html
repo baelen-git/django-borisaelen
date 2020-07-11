@@ -2,13 +2,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"> 
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="index,follow" />
     <meta name="referrer" content="unsafe-url" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="{% static 'blog/style.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'blog/prism.css' %}">
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/css/prism.css' %}">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap">
     <link rel="icon" href="{% static 'blog/media/favicon.png' %}">
     {{ comment_form.media }}
     <title>¯\_(ツ)_/¯ borisaelen.nl</title>
@@ -17,24 +19,22 @@
     {% endblock social_head %}
 </head>
 <body>
-    <nav>
-        <a href="{% url 'blog:index' %}">blog</a>
-        <a href="{% url 'blog:whoami' %}">whoami</a>
-    </nav>
-    <hr>
-    <!-- <svg style='width: 100%; height: 30; padding: 0%;'>
-		<line x1="10%" y1="30" x2="12%" y2="15" style="stroke:rgb(255,0,0);stroke-width:2"/>
-		<line x1="12%" y1="15" x2="88%" y2="15" style="stroke:rgb(255,0,0);stroke-width:2"/>
-		<line x1="88%" y1="15" x2="90%" y2="0" style="stroke:rgb(255,0,0);stroke-width:2"/>
-    </svg> -->
-    {% block content %}
-    <!-- Content Goes here -->
-    {% endblock content %}
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-    <script src="{% static 'blog/prism.js' %}"></script>
-    <script src="{% static 'blog/tldr.js' %}"></script>
+    <div class="container">
+        <nav>
+            <a href="{% url 'blog:index' %}">blog</a> | 
+            <a href="{% url 'blog:whoami' %}">whoami</a>
+        </nav>
+        <hr>
+        {% block content %}
+        <!-- Content Goes here -->
+        {% endblock content %}
+    </div>
+    <script src="{% static 'blog/js/jquery-3.5.1.slim.min.js' %}"></script>
+    <script src="{% static 'blog/js/popper.min.js' %}"></script>
+    <script src="{% static 'blog/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'blog/js/prism.js' %}"></script>
+    <script src="{% static 'blog/js/stickyElement.js' %}"></script>
+    <script src="{% static 'blog/js/tldr.js' %}"></script>
 </body>
 <!-- Footer -->
 <footer>

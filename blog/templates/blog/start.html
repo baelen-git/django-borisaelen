@@ -3,20 +3,16 @@
 
 <head>
     <meta charset="UTF-8"> {% load static %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{% static 'blog/style.css' %}">
     <title>¯\_(ツ)_/¯ borisaelen.nl</title>
     <link rel="icon" href="{% static 'blog/media/favicon.png' %}">
 </head>
 
 <body>
-    <div class="outer">
-        <div class="middle">
-            <div class="inner">
-                <p style="font-size: 3em;">
-                    <!-- ¯\_(ツ)_/¯ -->
-                    <a style="text-decoration: none; color: black;" href="{% url 'blog:index' %}">¯\_(ツ)_/¯</a>
-                </p>
-            </div>
+    <div class="h-100 row align-items-center">
+        <div class="col">
+            <a style="text-decoration: none; color: black;" href="{% url 'blog:index' %}">¯\_(ツ)_/¯</a>
         </div>
     </div>
 </body>
