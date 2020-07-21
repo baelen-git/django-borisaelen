@@ -20,7 +20,7 @@ from django.views.generic import TemplateView
 from django.conf import settings
 from django.conf.urls.static import static
 import tinymce.urls
-from filebrowser.sites import site
+#from filebrowser.sites import site
 
 urlpatterns = [
     path('blog/', include('blog.urls')),
