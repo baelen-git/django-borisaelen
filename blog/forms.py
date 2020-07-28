@@ -14,6 +14,7 @@ class CommentForm(forms.ModelForm):
                         "height": 200,
                         "menubar": "false",
                         "block_formats": "Paragraph=p; Heading 1=h1; Heading 3=h3; Pre=pre",
+                        "plugins": "code,tabfocus,advlist,autolink,lists,link,charmap,preview,anchor,searchreplace,visualblocks,fullscreen,insertdatetime,paste,help,wordcount",
                         "toolbar": "undo | formatselect | bold italic backcolor codesample | bullist numlist help",
                         "content_style": "body { font-family: 'Ubuntu Mono', monospace; }",
                     },
